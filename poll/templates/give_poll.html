@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+
+    <title>Poll</title>
+
+    <style type="text/css">
+  
+        .title {
+          padding: 5px 0px;
+        }
+
+        .title a {
+          text-decoration: none;
+          color: white;
+        }
+
+        .poll {
+          padding: 5px;
+          margin: 5px;
+          width: 100%;
+          border: 1px solid #ddd;
+          background: #f6f6f6;
+        }
+
+            .poll h3 {
+              width: 50%;
+              margin: 10px 0px 0px 10px;
+            }
+
+            .poll ul {
+              list-style: none;
+            }
+
+                .vote_options li {
+                  padding: 10px 0px;
+                  /*border: 1px solid blue;*/
+                }
+
+                .vote_options li label {
+                  /*border: 1px solid red;*/
+                  padding: 0px 5px;
+                  font-size: 20px;
+                }
+
+            .submit_button {
+                padding-left: 20px;
+            }
+
+            .submit_button input[type="submit"]{
+              font-size: 20px;
+            }
+
+
+    </style>
+</head>
+<body>
+   
+   <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-4 bg-primary">
+            </div>
+
+            <div class="col-md-4 bg-primary">
+              <h1 class="title text-center bg-primary text-white">
+                <a href="{% url 'home' %}">Poll App</a>
+              </h1>
+            </div>
+
+            <div class="col-md-4 bg-primary">
+            </div>
+        </div>
+   </div>
+
+   <br>
+
+  <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+              
+                <div class="poll">
+                  <h3>{{ my_vote.title }}</h3>
+                  <hr>
+                  <form method="POST" action="">
+                        {% csrf_token %}
+                        <ul class="vote_options">
+                            <li>
+                                <input type="radio" value="option1" name="vote">
+                                <label>{{ my_vote.option1 }}</label>
+                            </li>
+                            <li>
+                                <input type="radio" value="option2" name="vote">
+                                <label>{{ my_vote.option2 }}</label>
+                            </li>
+                            <li>
+                                <input type="radio" value="option3" name="vote">
+                                <label>{{ my_vote.option3 }}</label>
+                            </li>
+                        </ul>
+                        <div class="submit_button">
+                            <input class="btn btn-primary my-2"  type="submit" value="Submit">
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="col-md-3"></div>
+        </div>
+    </div>
+</body>
+</html>
